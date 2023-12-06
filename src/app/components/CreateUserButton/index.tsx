@@ -2,10 +2,15 @@
 
 import { CreateUserButtonContainer } from './styles';
 
-export function CreateUserButton() {
+interface CreateEntityButtonProps {
+  dataType: 'groups' | 'users'
+}
+
+export function CreateEntityButton({ dataType }: CreateEntityButtonProps) {
+  const isUsersData = dataType === 'users';
   return (
     <CreateUserButtonContainer>
-      Create New User
+      Create New {isUsersData ? 'User' : 'Group'}
     </CreateUserButtonContainer>
   );
 }

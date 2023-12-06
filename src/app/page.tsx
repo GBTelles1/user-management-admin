@@ -1,7 +1,7 @@
 'use client';
 
 import { MainContainer } from '../styles/Home';
-import { CreateUserButton } from './components/CreateUserButton';
+import { CreateEntityButton } from './components/CreateUserButton';
 import { UsersDataTable } from './components/UsersDataTable';
 
 const users = [
@@ -28,7 +28,7 @@ const users = [
 export default function Home() {
   return (
     <MainContainer>
-      <CreateUserButton />
+      <CreateEntityButton dataType='users' />
       <UsersDataTable data={users} />
     </MainContainer>
   );
