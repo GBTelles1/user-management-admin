@@ -2,16 +2,6 @@ import { createGlobalStyle } from 'styled-components';
 
 const styled = { createGlobalStyle };
 
-// Basic Project Configuration and Layout
-
-// Added:
-// - ESLint custom rules
-// - Styled components installation with SSR support
-// - Theme
-// - Global styles
-// - Header component
-// - First version of README.md
-
 const GlobalStyles = styled.createGlobalStyle`
   * {
     box-sizing: border-box;
@@ -30,7 +20,7 @@ const GlobalStyles = styled.createGlobalStyle`
     background: #29292E;
   }
 
-  a {
+  a, button {
     color: inherit;
     text-decoration: none;
   }
