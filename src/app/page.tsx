@@ -29,7 +29,7 @@ export default function Home() {
   return (
     <MainContainer>
       <CreateEntityButton dataType='users' />
-      <UsersDataTable data={users} />
+      <UsersDataTable users={users} />
     </MainContainer>
   );
 }
