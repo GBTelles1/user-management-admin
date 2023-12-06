@@ -9,10 +9,10 @@ interface User {
 }
 
 interface UsersDataTableProps {
-  data: User[],
+  users: User[],
 }
 
-export function UsersDataTable({ data }: UsersDataTableProps) {
+export function UsersDataTable({ users }: UsersDataTableProps) {
   return (
     <DataTableContainer>
       <table>
@@ -26,14 +26,17 @@ export function UsersDataTable({ data }: UsersDataTableProps) {
           </tr>
         </thead>
         <tbody>
-          {data.map((dataItem) => {
+          {users.map((usersItem) => {
+            const numberOfGroupsText = usersItem.groups.length === 1 ? 
+              `${usersItem.groups.length} group` : 
+              `${usersItem.groups.length} groups`;
             // UsersDataTable rows
             return (
-              <tr key={dataItem.id}>
-                <td>{dataItem.id}</td>
-                <td>{dataItem.name}</td>
-                <td>{dataItem.email}</td>
-                <td>{dataItem.groups.length} groups</td>
+              <tr key={usersItem.id}>
+                <td>{usersItem.id}</td>
+                <td>{usersItem.name}</td>
+                <td>{usersItem.email}</td>
+                <td>{numberOfGroupsText}</td>
                 <td>
                   <Link href={'#'}>
                     See Details
