@@ -2,11 +2,11 @@
 
 import { RedirectButtonContainer } from './styles';
 
-interface CreateEntityButtonProps {
+interface RedirectCreatePageButtonProps {
   dataType: 'groups' | 'users'
 }
 
-export function RedirectCreatePageButton({ dataType }: CreateEntityButtonProps) {
+export function RedirectCreatePageButton({ dataType }: RedirectCreatePageButtonProps) {
   const isUsersData = dataType === 'users';
   const createEntityButtonHref = `/${dataType}/create`;
   return (
