@@ -5,7 +5,7 @@ interface User {
   id: string;
   name: string;
   email: string;
-  groups: number[];
+  groupsId: string[];
 }
 
 interface UsersDataTableProps {
@@ -27,9 +27,9 @@ export function UsersDataTable({ users }: UsersDataTableProps) {
         </thead>
         <tbody>
           {users.map((usersItem) => {
-            const numberOfGroupsText = usersItem.groups.length === 1 ? 
-              `${usersItem.groups.length} group` : 
-              `${usersItem.groups.length} groups`;
+            const numberOfGroupsText = usersItem.groupsId.length === 1 ? 
+              `${usersItem.groupsId.length} group` : 
+              `${usersItem.groupsId.length} groups`;
             // UsersDataTable rows
             return (
               <tr key={usersItem.id}>
