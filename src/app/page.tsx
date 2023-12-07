@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { MainContainer } from '../styles/Home';
-import { CreateEntityButton } from './components/CreateUserButton';
+import { RedirectCreatePageButton } from './components/RedirectCreatePageButton';
 import { UsersDataTable } from './components/UsersDataTable';
 
 interface User {
@@ -30,7 +30,7 @@ export default function Home() {
 
   return (
     <MainContainer>
-      <CreateEntityButton dataType='users' />
+      <RedirectCreatePageButton dataType='users' />
       <UsersDataTable users={users} />
     </MainContainer>
   );
