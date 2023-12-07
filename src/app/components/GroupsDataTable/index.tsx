@@ -2,9 +2,9 @@ import Link from 'next/link';
 import { DataTableContainer } from './styles';
 
 interface Group {
-  id: number
+  id: string
   name: string
-  users: string[]
+  usersId: string[]
 }
 
 interface GroupsDataTableProps {
@@ -25,9 +25,9 @@ export function GroupsDataTable({ groups }: GroupsDataTableProps) {
         </thead>
         <tbody>
           {groups.map((group) => {
-            const numberOfUsersText = group.users.length > 1 ? 
-              `${group.users.length} users` : 
-              `${group.users.length} user`;
+            const numberOfUsersText = group.usersId.length > 1 ? 
+              `${group.usersId.length} users` : 
+              `${group.usersId.length} user`;
   
             // GroupsDataTable rows
             return (
