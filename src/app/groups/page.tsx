@@ -1,6 +1,6 @@
 'use client';
 import { MainContainer } from '@/styles/Home';
-import { CreateEntityButton } from '../components/CreateUserButton';
+import { RedirectCreatePageButton } from '../components/RedirectCreatePageButton';
 import { GroupsDataTable } from '../components/GroupsDataTable';
 import { useEffect, useState } from 'react';
 
@@ -28,7 +28,7 @@ export default function GroupsPage() {
   
   return (
     <MainContainer>
-      <CreateEntityButton dataType='groups' />
+      <RedirectCreatePageButton dataType='groups' />
       <GroupsDataTable groups={groups}/>
     </MainContainer>
   );
