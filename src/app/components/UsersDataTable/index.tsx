@@ -20,19 +20,19 @@ export function UsersDataTable({ users }: UsersDataTableProps) {
           </tr>
         </thead>
         <tbody>
-          {users.map((usersItem) => {
-            const numberOfGroupsText = usersItem.groupsId.length === 1 ? 
-              `${usersItem.groupsId.length} group` : 
-              `${usersItem.groupsId.length} groups`;
+          {users.map((user) => {
+            const numberOfGroupsText = user.groupsId.length === 1 ? 
+              `${user.groupsId.length} group` : 
+              `${user.groupsId.length} groups`;
             // UsersDataTable rows
             return (
-              <tr key={usersItem.id}>
-                <td>{usersItem.id}</td>
-                <td>{usersItem.name}</td>
-                <td>{usersItem.email}</td>
+              <tr key={user.id}>
+                <td>{user.id}</td>
+                <td>{user.name}</td>
+                <td>{user.email}</td>
                 <td>{numberOfGroupsText}</td>
                 <td>
-                  <Link href={'#'}>
+                  <Link href={`/users/${user.id}`}>
                     See Details
                   </Link>
                 </td>
