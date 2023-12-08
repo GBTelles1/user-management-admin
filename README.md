@@ -7,7 +7,9 @@ This is a basic User Management System project made for the tech test of InterNa
 - Next: provides me performance, caching, and easy configuration.
 - Typescript: provides me productivity, and trustability.
 - Styled-components: provides me the power of Typescript in CSS without losing the CSS syntax and in a Clean Code way.
+- Zod: has a good integration with next and typescript.
 - ESLint: provides me a good balance between clean code and productivity, also giving trustability.
+- Json-server: just to simulate a backend and make it more realistic.
 
 ## Getting Started
 
@@ -17,26 +19,47 @@ First, install the dependencies:
 npm i
 ```
 
-Then run the development server:
+In this project, we use json-server. So to install it:
+
+```bash
+npm install -g json-server
+```
+
+Then, create a db.json file with some data (I've leave a example in the repository, but feel free to change it).
+
+Now, run the server
+```bash
+json-server --watch db.json --port 3004
+```
+Don't forget to run it in the port 3004 by using the "--port 3004" flag, because our frontend is using the port 3000.
+
+Then run the development frontend:
 
 ```bash
 npm run dev
 ```
-
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
 ## Features
-I can see a list of existing users
-- [] I can see a list of existing groups
-- [] I can create users
-- [] I can create groups
-- [] I can assign users to a group they aren’t already part of
-- [] I can remove users from a group
-- [] I can delete groups when they no longer have members
-- [] I can delete users
 
+- [x] I can see a list of existing users
+- [x] I can see a list of existing groups
+- [x] I can create users
+- [x] I can create groups
+- [x] I can assign users to a group they aren’t already part of
+- [x] I can remove users from a group
+- [x] I can delete groups when they no longer have members
+- [x] I can delete users
+- [x] A "user detail page" where it is possible to see a list of all groups that a given user is in
+- [x] A "group detail page" where it is possible to see a list of all users in a given group
+- [] Search functionality
+- [x] When a user is deleted, they are removed from all groups they belonged to
+- [x] A user cannot be created without having at least one group (think validation when creating a user)
+- [x] Input validation on the client-side
+- [x] Responsive
+- [] JS tests
+- [x] ES6 syntax
+- [x] ESLint (with some custom rules)
 
 To learn more about Next.js, take a look at the following resources:
 
