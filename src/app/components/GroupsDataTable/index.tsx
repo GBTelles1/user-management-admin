@@ -31,7 +31,7 @@ export function GroupsDataTable({ groups }: GroupsDataTableProps) {
                 <td>{group.name}</td>
                 <td>{numberOfUsersText}</td>
                 <td>
-                  <Link href={'#'}>
+                  <Link href={`/groups/${group.id}`}>
                     See Details
                   </Link>
                 </td>
