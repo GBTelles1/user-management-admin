@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { CreateUserForm, FormInput } from './styles';
 import { z } from 'zod';
-import { CreateEntityButtonForm } from '../../components/CreateEntityButtonForm';
+import { SaveEntityButtonForm } from '../../components/SaveEntityButtonForm';
 import { Group } from '@/interfaces';
 
 const createUserSchema = z.object({
@@ -114,7 +114,7 @@ export default function CreateUserPage() {
         </select>
       </FormInput>
 
-      <CreateEntityButtonForm />
+      <SaveEntityButtonForm />
 
       {!!message && <span>{message}</span>}
     </CreateUserForm>
