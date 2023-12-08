@@ -21,9 +21,9 @@ export function UsersDataTable({ users }: UsersDataTableProps) {
         </thead>
         <tbody>
           {users.map((user) => {
-            const numberOfGroupsText = user.groupsId.length === 1 ? 
-              `${user.groupsId.length} group` : 
-              `${user.groupsId.length} groups`;
+            const numberOfGroupsText = user.groupsId.length > 1 ? 
+              `${user.groupsId.length} groups` : 
+              `${user.groupsId.length} group`;
             // UsersDataTable rows
             return (
               <tr key={user.id}>
