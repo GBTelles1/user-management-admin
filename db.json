@@ -2,8 +2,8 @@
   "users": [
     {
       "id": "cb891df3-23df-40e6-ab47-67e74c8a9364",
-      "name": "Gabriel Bernardo Telles",
-      "email": "gabribertelles@hotmail.com",
+      "name": "Gabriel Telles",
+      "email": "gabri@hotmail.com",
       "groupsId": [
         "a784bce1-3db5-48ba-9ab3-e681f6480ce9"
       ]
@@ -18,7 +18,7 @@
     },
     {
       "id": "e033ca8c-5302-4ae6-aa03-4c4c228d97c6",
-      "name": "Test",
+      "name": "User Test",
       "email": "teste@g.com",
       "groupsId": [
         "9f6e1ea0-61a9-4b6f-a90a-da215531c84d"
@@ -35,14 +35,14 @@
     },
     {
       "id": "a784bce1-3db5-48ba-9ab3-e681f6480ce9",
-      "name": "gbt",
+      "name": "gbt Group",
       "usersId": [
         "cb891df3-23df-40e6-ab47-67e74c8a9364"
       ]
     },
     {
       "id": "9f6e1ea0-61a9-4b6f-a90a-da215531c84d",
-      "name": "gbtest",
+      "name": "gbtest Group",
       "usersId": [
         "e033ca8c-5302-4ae6-aa03-4c4c228d97c6"
       ]
