@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { CreateUserForm, FormInput } from './styles';
 import { z } from 'zod';
 import { CreateEntityButtonForm } from '../../components/CreateEntityButtonForm';
+import { Group } from '@/interfaces';
 
 const createUserSchema = z.object({
   id: z.string(),
@@ -10,12 +11,6 @@ const createUserSchema = z.object({
   email: z.string().email(),
   groupsId: z.array(z.string()).nonempty(),
 });
-
-interface Group {
-  id: string
-  name: string
-  usersId: string[]
-}
 
 export default function CreateUserPage() {
   const [groups, setGroups] = useState<Group[]>([]);
@@ -107,7 +102,7 @@ export default function CreateUserPage() {
 
       <FormInput>
         <label htmlFor="groups">What&apos;s(&apos;re) your(s) group(s)?</label>
-        <select id="groups" name="groups" placeholder="Your group(s)" required >
+        <select id="groups" name="groups" required >
           <option value=''>Select your group</option>
           {groups.map((group) => {
             return (

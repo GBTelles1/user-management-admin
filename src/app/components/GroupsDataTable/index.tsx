@@ -1,11 +1,6 @@
 import Link from 'next/link';
 import { DataTableContainer } from './styles';
-
-interface Group {
-  id: string
-  name: string
-  usersId: string[]
-}
+import { Group } from '@/interfaces';
 
 interface GroupsDataTableProps {
   groups: Group[]
