@@ -74,4 +74,9 @@ export const DeleteButton = styled.button`
   border-radius: 10px;
 
   cursor: pointer;
+
+  &:disabled {
+    opacity: 30%;
+    cursor: not-allowed;
+  }
 `;

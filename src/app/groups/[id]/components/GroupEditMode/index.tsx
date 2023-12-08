@@ -210,9 +210,15 @@ export function GroupEditMode({ currentGroup, setCurrentGroup, currentGroupUsers
           {!!message && <span>{message}</span>}
         </SaveDeleteButtons>
       </CreateUserForm>
-      <DeleteButton onClick={async () => {
-        await deleteGroup(currentGroup.id);
-      }}>Delete Group</DeleteButton>
+      <DeleteButton
+        onClick={async () => {
+          await deleteGroup(currentGroup.id);
+        }}
+
+        disabled={currentGroup.usersId.length > 0}
+      >
+        Delete Group
+      </DeleteButton>
     </EditPageContainer>
   );
 }
