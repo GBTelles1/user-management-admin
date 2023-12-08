@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import { UpdateUserForm, CurrentGroup, CurrentGroups, DeleteButton, EditPageContainer, FormInput, SaveDeleteButtons, UserDetail } from './styles';
 import { SetStateAction, useEffect, useState } from 'react';
-import { CreateEntityButtonForm } from '@/app/components/CreateEntityButtonForm';
+import { SaveEntityButtonForm } from '@/app/components/SaveEntityButtonForm';
 import { Group, User } from '@/interfaces';
 
 const updateUserSchema = z.object({
@@ -222,7 +222,7 @@ export function UserEditMode({ currentUser, setCurrentUser, currentUserGroups }:
         </FormInput>
       
         <SaveDeleteButtons>
-          <CreateEntityButtonForm />
+          <SaveEntityButtonForm />
 
           {!!message && <span>{message}</span>}
         </SaveDeleteButtons>

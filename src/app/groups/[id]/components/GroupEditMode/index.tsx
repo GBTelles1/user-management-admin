@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import { CreateUserForm, CurrentUser, CurrentUsers, DeleteButton, EditPageContainer, FormInput, SaveDeleteButtons, GroupDetail } from './styles';
 import { SetStateAction, useEffect, useState } from 'react';
-import { CreateEntityButtonForm } from '@/app/components/CreateEntityButtonForm';
+import { SaveEntityButtonForm } from '@/app/components/SaveEntityButtonForm';
 import { Group, User } from '@/interfaces';
 
 const updateGroupSchema = z.object({
@@ -205,7 +205,7 @@ export function GroupEditMode({ currentGroup, setCurrentGroup, currentGroupUsers
         </FormInput>
       
         <SaveDeleteButtons>
-          <CreateEntityButtonForm />
+          <SaveEntityButtonForm />
 
           {!!message && <span>{message}</span>}
         </SaveDeleteButtons>

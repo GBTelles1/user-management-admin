@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { CreateGroupForm, FormInput } from './styles';
 import { z } from 'zod';
-import { CreateEntityButtonForm } from '../../components/CreateEntityButtonForm';
+import { SaveEntityButtonForm } from '../../components/SaveEntityButtonForm';
 import { User } from '@/interfaces';
 
 const createGroupSchema = z.object({
@@ -117,7 +117,7 @@ export default function CreateGroupPage() {
         </select>
       </FormInput>
 
-      <CreateEntityButtonForm />
+      <SaveEntityButtonForm />
 
       {!!message && <span>{message}</span>}
     </CreateGroupForm>
