@@ -3,12 +3,7 @@ import { MainContainer } from '@/styles/Home';
 import { RedirectCreatePageButton } from '../components/RedirectCreatePageButton';
 import { GroupsDataTable } from '../components/GroupsDataTable';
 import { useEffect, useState } from 'react';
-
-interface Group {
-  id: string
-  name: string
-  usersId: string[]
-}
+import { Group } from '@/interfaces';
 
 export default function GroupsPage() {
   const [groups, setGroups] = useState<Group[]>([]);

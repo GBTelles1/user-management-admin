@@ -4,19 +4,15 @@ import { useEffect, useState } from 'react';
 import { MainContainer } from '../styles/Home';
 import { RedirectCreatePageButton } from './components/RedirectCreatePageButton';
 import { UsersDataTable } from './components/UsersDataTable';
-
-interface User {
-  id: string;
-  name: string;
-  email: string;
-  groupsId: string[];
-}
+import { User } from '@/interfaces';
 
 export default function Home() {
   const [users, setUsers] = useState<User[]>([]);
   
   async function getUsers() {
-    const usersData: User[] = await fetch('http://localhost:3004/users')
+    const usersData: User[] = await fetch('http://localhost:3004/users', {
+      next: { tags: ['users'] }
+    })
       .then((res) => res.json());
   
     if (!usersData) {
