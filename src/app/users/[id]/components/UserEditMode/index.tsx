@@ -182,6 +182,7 @@ export function UserEditMode({ currentUser, setCurrentUser, currentUserGroups }:
             id="name"
             name="name"
             defaultValue={currentUser.name}
+            required
           />
         </FormInput>
       
@@ -192,6 +193,7 @@ export function UserEditMode({ currentUser, setCurrentUser, currentUserGroups }:
             id="email"
             name="email"
             defaultValue={currentUser.email}
+            required
           />
         </FormInput>
 

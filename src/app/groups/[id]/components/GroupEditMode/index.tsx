@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { CreateUserForm, CurrentUser, CurrentUsers, DeleteButton, EditPageContainer, FormInput, SaveDeleteButtons, GroupDetail } from './styles';
+import { UpdateGroupForm, CurrentUser, CurrentUsers, DeleteButton, EditPageContainer, FormInput, SaveDeleteButtons, GroupDetail } from './styles';
 import { SetStateAction, useEffect, useState } from 'react';
 import { SaveEntityButtonForm } from '@/app/components/SaveEntityButtonForm';
 import { Group, User } from '@/interfaces';
@@ -164,7 +164,7 @@ export function GroupEditMode({ currentGroup, setCurrentGroup, currentGroupUsers
   useEffect(() => {getUsers();}, []);
   return (
     <EditPageContainer>
-      <CreateUserForm action={updateGroupForm}>
+      <UpdateGroupForm action={updateGroupForm}>
         <h2>ID</h2>
         <GroupDetail>{currentGroup.id}</GroupDetail>
 
@@ -175,6 +175,7 @@ export function GroupEditMode({ currentGroup, setCurrentGroup, currentGroupUsers
             id="name"
             name="name"
             defaultValue={currentGroup.name}
+            required
           />
         </FormInput>
 
@@ -209,7 +210,7 @@ export function GroupEditMode({ currentGroup, setCurrentGroup, currentGroupUsers
 
           {!!message && <span>{message}</span>}
         </SaveDeleteButtons>
-      </CreateUserForm>
+      </UpdateGroupForm>
       <DeleteButton
         onClick={async () => {
           await deleteGroup(currentGroup.id);

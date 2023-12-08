@@ -4,7 +4,7 @@ export const EditPageContainer = styled.div`
   position: relative;
 `;
 
-export const CreateUserForm = styled.form`
+export const UpdateGroupForm = styled.form`
   display: flex;
   flex-direction: column;
   gap: 2rem;
