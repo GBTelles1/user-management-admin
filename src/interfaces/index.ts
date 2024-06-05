@@ -1,7 +1,7 @@
-export interface Group {
-  id: string
-  name: string
-  usersId: string[]
+export interface Community {
+  id: string;
+  name: string;
+  usersId: string[];
 }
 
 export interface User {

@@ -1,6 +1,5 @@
-'use client';
-
-import { RedirectButtonContainer } from './styles';
+import Link from 'next/link';
+import styles from './RedirectCreatePageButton.module.css';
 
 interface RedirectCreatePageButtonProps {
   dataType: 'groups' | 'users'
@@ -9,9 +8,10 @@ interface RedirectCreatePageButtonProps {
 export function RedirectCreatePageButton({ dataType }: RedirectCreatePageButtonProps) {
   const isUsersData = dataType === 'users';
   const createEntityButtonHref = `/${dataType}/create`;
+
   return (
-    <RedirectButtonContainer href={createEntityButtonHref}>
+    <Link className={styles.redirectButton} href={createEntityButtonHref}>
       Create New {isUsersData ? 'User' : 'Group'}
-    </RedirectButtonContainer>
+    </Link>
   );
 }

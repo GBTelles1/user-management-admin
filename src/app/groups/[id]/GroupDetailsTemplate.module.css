@@ -1,0 +1,31 @@
+.groupDetailsMainContainer {
+  padding: 0 5rem 1rem 5rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.groupDetailsHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.groupDetailsHeader > h1 {
+  margin-bottom: 1rem;
+}
+
+.groupDetailsHeader > a {
+  background: #1e70a0;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 1rem;
+
+  opacity: 70%;
+
+  transition: 1s ease-out;
+}
+
+.groupDetailsHeader > a:hover {
+  opacity: 100%;
+}

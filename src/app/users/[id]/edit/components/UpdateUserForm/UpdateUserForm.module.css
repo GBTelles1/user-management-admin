@@ -1,0 +1,50 @@
+.updateUserForm {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.formInputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.formInputContainer > label {
+  font-size: 1.5rem;
+}
+
+.formInput {
+  width: 40%;
+  padding: 0.5rem;
+
+  border-radius: 10px;
+}
+
+.readOnlyFormInput {
+  width: 25%;
+  background: none;
+  border: none;
+  color: #ffffff;
+
+  font-size: 1rem;
+}
+
+.currentUserGroups {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  width: 40%;
+  padding: 1rem;
+
+  border: 2px solid #000000;
+  border-radius: 10px;
+}
+
+.currentGroup {
+  display: flex;
+  flex: 1;
+  gap: 1rem;
+}

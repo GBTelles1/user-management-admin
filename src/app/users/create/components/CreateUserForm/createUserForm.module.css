@@ -1,0 +1,29 @@
+.createUserForm {  
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+}
+
+.createUserForm h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.formInput {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+}
+
+.formInput > label {
+  font-size: 1.5rem;
+}
+
+.formInput > input, .formInput > select {
+  width: 40%;
+  padding: 0.5rem;
+
+  border-radius: 10px;
+}

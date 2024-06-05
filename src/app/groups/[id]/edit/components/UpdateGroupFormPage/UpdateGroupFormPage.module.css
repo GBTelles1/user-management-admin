@@ -1,0 +1,10 @@
+.updateGroupForm {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.updateGroupFormTitle {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}

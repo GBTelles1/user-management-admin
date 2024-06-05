@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { DataTableContainer } from './styles';
+import styles from '../DataTable.module.css';
 import { Group } from '@/interfaces';
 
 interface GroupsDataTableProps {
@@ -8,31 +8,32 @@ interface GroupsDataTableProps {
 
 export function GroupsDataTable({ groups }: GroupsDataTableProps) {
   return (
-    <DataTableContainer>
+    <div className={styles.dataTable}>
       <table>
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>#Users</th>
-            <th></th>
+            {/* GroupsDataTable's head */}
+            <th className={styles.dataTableHead}>ID</th>
+            <th className={styles.dataTableHead}>Name</th>
+            <th className={styles.dataTableHead}>#Users</th>
+            <th className={styles.dataTableHead}></th>
           </tr>
         </thead>
         <tbody>
+          {/* GroupsDataTable rows */}
           {groups.map((group) => {
             const numberOfUsersText = group.usersId.length > 1 ? 
               `${group.usersId.length} users` : 
               `${group.usersId.length} user`;
   
-            // GroupsDataTable rows
             return (
               <tr key={group.id}>
-                <td>{group.id}</td>
-                <td>{group.name}</td>
-                <td>{numberOfUsersText}</td>
-                <td>
+                <td className={styles.tableData}>{group.id}</td>
+                <td className={styles.tableData}>{group.name}</td>
+                <td className={styles.tableData}>{numberOfUsersText}</td>
+                <td className={styles.tableData}>
                   <Link href={`/groups/${group.id}`}>
-                    See Details
+                    See Group Details
                   </Link>
                 </td>
               </tr> 
@@ -40,6 +41,6 @@ export function GroupsDataTable({ groups }: GroupsDataTableProps) {
           })}
         </tbody>
       </table>
-    </DataTableContainer>
+    </div>
   );
 }

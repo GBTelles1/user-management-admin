@@ -1,33 +1,15 @@
-'use client';
-
-import { useEffect, useState } from 'react';
-import { MainContainer } from '../styles/Home';
 import { RedirectCreatePageButton } from './components/RedirectCreatePageButton';
-import { UsersDataTable } from './components/UsersDataTable';
-import { User } from '@/interfaces';
+import { UsersDataTable } from './components/DataTables/UsersDataTable';
+import styles from '../styles/MainContainer/MainContainer.module.css';
+import { getUsers } from './users/actions/getUsers';
 
-export default function Home() {
-  const [users, setUsers] = useState<User[]>([]);
+export default async function Home() {
+  const users = await getUsers();
   
-  async function getUsers() {
-    const usersData: User[] = await fetch('http://localhost:3004/users', {
-      next: { tags: ['users'] }
-    })
-      .then((res) => res.json());
-  
-    if (!usersData) {
-      return;
-    }
-   
-    setUsers(usersData);
-  }
-  
-  useEffect(() => {getUsers();}, []);
-
   return (
-    <MainContainer>
-      <RedirectCreatePageButton dataType='users' />
+    <main className={styles.mainContainer}>
+      <RedirectCreatePageButton dataType={'users'} />
       <UsersDataTable users={users} />
-    </MainContainer>
+    </main>
   );
 }

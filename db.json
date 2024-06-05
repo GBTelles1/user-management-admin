@@ -18,10 +18,52 @@
     },
     {
       "id": "e033ca8c-5302-4ae6-aa03-4c4c228d97c6",
-      "name": "User Test",
-      "email": "teste@g.com",
+      "name": "UserTest",
+      "email": "teste@gmail.com",
       "groupsId": [
         "9f6e1ea0-61a9-4b6f-a90a-da215531c84d"
+      ]
+    },
+    {
+      "id": "18f8b597-da18-4ec4-b950-2c88aa01c617",
+      "name": "Testtest 7",
+      "email": "teste@g.com",
+      "groupsId": [
+        "a431a49f-4c8d-4036-9a60-aeef36395336"
+      ]
+    },
+    {
+      "id": "e500537a-8a70-465d-9fee-9551d56e34f2",
+      "name": "Testtest 8",
+      "email": "teste@g.com",
+      "groupsId": [
+        "a431a49f-4c8d-4036-9a60-aeef36395336"
+      ]
+    },
+    {
+      "id": "7590e052-d8ab-4770-93ec-a955cda5b1f7",
+      "name": "Testtest",
+      "email": "teste@gmail.com",
+      "groupsId": [
+        "a431a49f-4c8d-4036-9a60-aeef36395336",
+        "a7c058d3-ae60-4714-b57f-fad874b1b3c3"
+      ]
+    },
+    {
+      "id": "66910d19-9817-49d5-bba0-fe7a19ed2ee9",
+      "name": "johny test",
+      "email": "teste@gmail.com.br",
+      "groupsId": [
+        "a431a49f-4c8d-4036-9a60-aeef36395336"
+      ]
+    },
+    {
+      "id": "0e859b76-6983-4f35-82e7-1c87d5760fcf",
+      "name": "Test gbt",
+      "email": "test@gmail.com",
+      "groupsId": [
+        "a431a49f-4c8d-4036-9a60-aeef36395336",
+        "781c4919-7c44-4039-9b3e-3e563164e5e4"
       ]
     }
   ],
@@ -45,6 +87,41 @@
       "name": "gbtest Group",
       "usersId": [
         "e033ca8c-5302-4ae6-aa03-4c4c228d97c6"
+      ]
+    },
+    {
+      "id": "a431a49f-4c8d-4036-9a60-aeef36395336",
+      "name": "Test",
+      "usersId": [
+        "18f8b597-da18-4ec4-b950-2c88aa01c617",
+        "e500537a-8a70-465d-9fee-9551d56e34f2",
+        "7590e052-d8ab-4770-93ec-a955cda5b1f7",
+        "66910d19-9817-49d5-bba0-fe7a19ed2ee9",
+        "0e859b76-6983-4f35-82e7-1c87d5760fcf"
+      ]
+    },
+    {
+      "id": "d9f274de-d14a-4a26-a795-ad362f7483e0",
+      "name": "Test Group",
+      "usersId": []
+    },
+    {
+      "id": "a7c058d3-ae60-4714-b57f-fad874b1b3c3",
+      "name": "Created with User",
+      "usersId": [
+        "7590e052-d8ab-4770-93ec-a955cda5b1f7"
+      ]
+    },
+    {
+      "id": "3fbd3660-dee8-4f33-a77f-69fcf5e714b6",
+      "name": "New group",
+      "usersId": []
+    },
+    {
+      "id": "781c4919-7c44-4039-9b3e-3e563164e5e4",
+      "name": "New with user",
+      "usersId": [
+        "0e859b76-6983-4f35-82e7-1c87d5760fcf"
       ]
     }
   ]

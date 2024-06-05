@@ -1,3 +1,4 @@
+'use client';
 import { Group, User } from '@/interfaces';
 import { UserDetail } from './styles';
 

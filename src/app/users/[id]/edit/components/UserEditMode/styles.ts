@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const EditPageContainer = styled.div`
   position: relative;
@@ -24,7 +24,8 @@ export const FormInput = styled.div`
     font-size: 1.5rem;
   }
 
-  input, select {
+  input,
+  select {
     width: 40%;
     padding: 0.5rem;
 
@@ -51,7 +52,7 @@ export const CurrentGroup = styled.div`
   gap: 1rem;
 
   button {
-    background: #C30010;
+    background: #c30010;
     padding: 0rem 0.5rem;
     border-radius: 8px;
   }
@@ -68,7 +69,7 @@ export const DeleteButton = styled.button`
   bottom: 0;
   right: 0;
 
-  background: #C30010;
+  background: #c30010;
   font-size: 1rem;
   padding: 0.8rem 1rem;
   border-radius: 10px;

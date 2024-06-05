@@ -1,8 +1,19 @@
 import { z } from 'zod';
-import { UpdateGroupForm, CurrentUser, CurrentUsers, DeleteButton, EditPageContainer, FormInput, SaveDeleteButtons, GroupDetail } from './styles';
+import {
+  UpdateGroupForm,
+  CurrentUser,
+  CurrentUsers,
+  DeleteButton,
+  EditPageContainer,
+  FormInput,
+  SaveDeleteButtons,
+  GroupDetail,
+} from './styles';
 import { SetStateAction, useEffect, useState } from 'react';
 import { SaveEntityButtonForm } from '@/app/components/SaveEntityButtonForm';
 import { Group, User } from '@/interfaces';
+import { getUsers, updateUser } from '@/app/users/actions';
+import { deleteGroup, updateGroup } from '@/app/groups/actions';
 
 const updateGroupSchema = z.object({
   id: z.string().min(1),
@@ -11,86 +22,104 @@ const updateGroupSchema = z.object({
 });
 
 interface GroupEditModeProps {
-  currentGroup: Group
-  setCurrentGroup: (value: SetStateAction<Group>) => void
-  currentGroupUsers: User[]
+  currentGroup: Group;
+  // setCurrentGroup: (value: SetStateAction<Group>) => void;
+  currentGroupUsers: User[];
 }
 
-export function GroupEditMode({ currentGroup, setCurrentGroup, currentGroupUsers }: GroupEditModeProps) {
-  const [message, setMessage] = useState('');  
-  const [users, setUsers] = useState<User[]>([]);
+export async function GroupEditMode({
+  currentGroup,
+  currentGroupUsers,
+}: GroupEditModeProps) {
+  const [message, setMessage] = useState('');
+  // const [users, setUsers] = useState<User[]>([]);
+  const allUsers = await getUsers();
 
-  async function getUsers() {
-    const usersData: User[] = await fetch('http://localhost:3004/users')
-      .then((res) => res.json());
-  
-    if (!usersData) {
-      return;
-    }
+  const usersOutsideCurrentGroup = allUsers.filter((user) => {
+    return !currentGroup.usersId.includes(user.id);
+  });
+  // async function getUsers() {
+  //   const usersData: User[] = await fetch('http://localhost:3004/users').then(
+  //     (res) => res.json()
+  //   );
 
-    // This will be used to add a new group, so I don't need to 
-    const users = usersData.filter((user) => {
-      return !currentGroup.usersId.includes(user.id);
-    });
-   
-    setUsers(users);
-  }
+  //   if (!usersData) {
+  //     return;
+  //   }
 
-  async function updateUser(updatedUser: User) {
-    await fetch(`http://localhost:3004/users/${updatedUser.id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(updatedUser),
-      next: { tags: [`User-${updatedUser.id}`] }
-    });
-  }
-  
-  async function updateGroup(updatedGroup: Group) {
-    await fetch(`http://localhost:3004/groups/${currentGroup.id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(updatedGroup),
-      next: { tags: [`Group-${updatedGroup.id}`] }
-    });
-  }
+  //   // This will be used to add a new group, so I don't need to
+  //   const users = usersData.filter((user) => {
+  //     return !currentGroup.usersId.includes(user.id);
+  //   });
 
-  async function deleteGroup(groupId: string) {
-    await fetch(`http://localhost:3004/groups/${groupId}`, {
-      method: 'DELETE',
-    });
-  }
+  //   setUsers(users);
+  // }
+
+  // async function updateUser(updatedUser: User) {
+  //   await fetch(`http://localhost:3004/users/${updatedUser.id}`, {
+  //     method: 'PUT',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify(updatedUser),
+  //     next: { tags: [`User-${updatedUser.id}`] },
+  //   });
+  // }
+
+  // async function updateGroup(updatedGroup: Group) {
+  //   await fetch(`http://localhost:3004/groups/${currentGroup.id}`, {
+  //     method: 'PUT',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify(updatedGroup),
+  //     next: { tags: [`Group-${updatedGroup.id}`] },
+  //   });
+  // }
+
+  // async function deleteGroup(groupId: string) {
+  //   await fetch(`http://localhost:3004/groups/${groupId}`, {
+  //     method: 'DELETE',
+  //   });
+  // }
 
   async function removeUserFromGroup(user: User) {
-    const updatedGroup = { ...currentGroup,
+    const updatedGroup = {
+      ...currentGroup,
       usersId: currentGroup.usersId.filter((usersIdItem) => {
         return usersIdItem !== user.id;
-      })
+      }),
     };
-    const updatedUser = { ...user,
+    const updatedUser = {
+      ...user,
       groupsId: user.groupsId.filter((groupsIdItem) => {
         return groupsIdItem !== currentGroup.id;
-      })
+      }),
     };
-  
-    setCurrentGroup(updatedGroup);
+
+    // setCurrentGroup(updatedGroup);
     await updateGroup(updatedGroup)
       .then(() => {
         setMessage('Saved!');
       })
-      .catch(() => setMessage('Failed to save user, please check your entries and try again'));
+      .catch(() =>
+        setMessage(
+          'Failed to save user, please check your entries and try again'
+        )
+      );
 
     await updateUser(updatedUser)
       .then(() => {
         setMessage('Saved!');
       })
-      .catch(() => setMessage('Failed to remove user from Group, please check your entries and try again'));
+      .catch(() =>
+        setMessage(
+          'Failed to remove user from Group, please check your entries and try again'
+        )
+      );
   }
 
-  function getUsersIdUpdated(newUsersIdData: string[] ) {
+  function getUsersIdUpdated(newUsersIdData: string[]) {
     const newUsersId = newUsersIdData.filter((newUserId) => {
       // Return only the user ID that's not in Group's groupsId
       return !currentGroup.usersId.includes(newUserId);
@@ -107,61 +136,66 @@ export function GroupEditMode({ currentGroup, setCurrentGroup, currentGroupUsers
     return usersIdUpdated;
   }
 
-  async function updateGroupForm(formData: FormData) {
-    // To create update a Group, we also need to update the users
+  // async function updateGroupForm(formData: FormData) {
+  //   // To create update a Group, we also need to update the users
 
-    // Validating the Group's usersId list
-    const newUsersIdData = formData.getAll('users').map((userId) => {
-      return userId.toString();
-    });
+  //   // Validating the Group's usersId list
+  //   const newUsersIdData = formData.getAll('users').map((userId) => {
+  //     return userId.toString();
+  //   });
 
-    const newUsersIdChecked = newUsersIdData.filter((newUserId) => {
-      return newUserId !== '';
-    });
+  //   const newUsersIdChecked = newUsersIdData.filter((newUserId) => {
+  //     return newUserId !== '';
+  //   });
 
-    // Getting group's usersId list updated
-    const usersIdUpdated = getUsersIdUpdated(newUsersIdChecked);
+  //   // Getting group's usersId list updated
+  //   const usersIdUpdated = getUsersIdUpdated(newUsersIdChecked);
 
-    // First, parsing the formData with updateUserSchema to ensure the User type
-    const parsedGroup = updateGroupSchema.safeParse({
-      id: currentGroup.id,
-      name: formData.get('name'),
-      usersId: usersIdUpdated,
-    });
+  //   // First, parsing the formData with updateUserSchema to ensure the User type
+  //   const parsedGroup = updateGroupSchema.safeParse({
+  //     id: currentGroup.id,
+  //     name: formData.get('name'),
+  //     usersId: usersIdUpdated,
+  //   });
 
-    if (!parsedGroup.success) {
-      setMessage('Failed to save group, please check your entries and try again');
-      return { message: 'Failed to save group' };
-    }
-  
-    const updatedGroup = parsedGroup.data;
+  //   if (!parsedGroup.success) {
+  //     setMessage(
+  //       'Failed to save group, please check your entries and try again'
+  //     );
+  //     return { message: 'Failed to save group' };
+  //   }
 
-    // Update the user
-    setCurrentGroup(updatedGroup);
-    await updateGroup(updatedGroup)
-      .then(() => {
-        setMessage('Saved!');
-      })
-      .catch(() => setMessage('Failed to save group, please check your entries and try again'));
-    
-    // Update users
-    newUsersIdChecked.map(async (userId) => {
-      // Get the group by the ID
-      const userResponse = await fetch(`http://localhost:3004/users/${userId}`);
-      const userToUpdate: User = await userResponse.json();
-      
-      // Update the groupsId list
-      const userUpdated = {
-        ...userToUpdate,
-        groupsId: [...userToUpdate.groupsId, updatedGroup.id]
-      };
-      
-      // Update user
-      await updateUser(userUpdated);
-    });
-  }
+  //   const updatedGroup = parsedGroup.data;
 
-  useEffect(() => {getUsers();}, []);
+  //   // Update the user
+  //   // setCurrentGroup(updatedGroup);
+  //   await updateGroup(updatedGroup)
+  //     .then(() => {
+  //       setMessage('Saved!');
+  //     })
+  //     .catch(() =>
+  //       setMessage(
+  //         'Failed to save group, please check your entries and try again'
+  //       )
+  //     );
+
+  //   // Update users
+  //   newUsersIdChecked.map(async (userId) => {
+  //     // Get the group by the ID
+  //     const userResponse = await fetch(`http://localhost:3004/users/${userId}`);
+  //     const userToUpdate: User = await userResponse.json();
+
+  //     // Update the groupsId list
+  //     const userUpdated = {
+  //       ...userToUpdate,
+  //       groupsId: [...userToUpdate.groupsId, updatedGroup.id],
+  //     };
+
+  //     // Update user
+  //     await updateUser(userUpdated);
+  //   });
+  // }
+
   return (
     <EditPageContainer>
       <UpdateGroupForm action={updateGroupForm}>
@@ -185,7 +219,9 @@ export function GroupEditMode({ currentGroup, setCurrentGroup, currentGroupUsers
             return (
               <CurrentUser key={user.id}>
                 <div>{user.name}</div>
-                <button onClick={() => removeUserFromGroup(user)}>Remove</button>
+                <button onClick={() => removeUserFromGroup(user)}>
+                  Remove
+                </button>
               </CurrentUser>
             );
           })}
@@ -194,8 +230,8 @@ export function GroupEditMode({ currentGroup, setCurrentGroup, currentGroupUsers
         <FormInput>
           <label htmlFor="users">Select a new user</label>
           <select id="users" name="users">
-            <option value=''>Select your user</option>
-            {users.map((user) => {
+            <option value="">Select an user</option>
+            {usersOutsideCurrentGroup.map((user) => {
               return (
                 <option key={user.id} value={user.id}>
                   {user.name}
@@ -204,7 +240,7 @@ export function GroupEditMode({ currentGroup, setCurrentGroup, currentGroupUsers
             })}
           </select>
         </FormInput>
-      
+
         <SaveDeleteButtons>
           <SaveEntityButtonForm />
 
@@ -215,7 +251,6 @@ export function GroupEditMode({ currentGroup, setCurrentGroup, currentGroupUsers
         onClick={async () => {
           await deleteGroup(currentGroup.id);
         }}
-
         disabled={currentGroup.usersId.length > 0}
       >
         Delete Group

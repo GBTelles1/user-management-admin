@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const UserDetailsContainer = styled.main`
   padding: 0 5rem;
@@ -6,18 +6,14 @@ export const UserDetailsContainer = styled.main`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-
-  h2 {
-    font-weight: 400;
-  }
 `;
 
 export const UserDetailsHeader = styled.header`
-   display: flex;
-   justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 
-   button {
-    background: #1E70A0;
+  button {
+    background: #1e70a0;
     padding: 1rem;
     border-radius: 8px;
     font-size: 1rem;
@@ -30,7 +26,7 @@ export const UserDetailsHeader = styled.header`
     &:hover {
       opacity: 100%;
     }
-   }
+  }
 `;
 
 export const PageTitle = styled.h1`

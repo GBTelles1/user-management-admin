@@ -1,0 +1,31 @@
+.userDetailsMainContainer {
+  padding: 0 5rem 1rem 5rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.userDetailsHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.userDetailsHeader > h1 {
+  margin-bottom: 1rem;
+}
+
+.userDetailsHeader > a {
+  background: #1e70a0;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 1rem;
+
+  opacity: 70%;
+
+  transition: 1s ease-out;
+}
+
+.userDetailsHeader > a:hover {
+  opacity: 100%;
+}

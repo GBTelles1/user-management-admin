@@ -1,12 +1,27 @@
 {
-  "extends": ["next/core-web-vitals", "eslint:recommended"],
+  "extends": [
+    "next/core-web-vitals",
+    "eslint:recommended"
+  ],
   "rules": {
     // enable additional rules
-    "indent": ["error", 2],
+    "indent": [
+      "error",
+      2
+    ],
     "eol-last": "warn",
-    "object-curly-spacing":["warn", "always"],
-    "quotes": ["error", "single"],
-    "semi": ["error", "always"],
+    "object-curly-spacing": [
+      "warn",
+      "always"
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "semi": [
+      "error",
+      "always"
+    ],
     "no-undef": "off",
     "no-unused-vars": "off"
   }
